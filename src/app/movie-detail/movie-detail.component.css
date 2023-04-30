@@ -1,0 +1,104 @@
+@media screen and (max-width: 426px) {
+    .content-wrapper {
+        flex-wrap: wrap;
+    }
+
+    .content-wrapper img {
+        width: 50%;
+        display: block;
+        margin: auto;
+    }
+
+    .contents {
+        margin-left: 0 !important;
+        padding: 0 10px;
+    }
+
+    .title {
+        text-align: center;
+    }
+
+    .date {
+        display: block;
+    }
+
+    .rating {
+        float: right;
+    }
+}
+
+@media screen and (min-width: 426px) and (max-width: 950px) {
+    .content-wrapper img {
+        width: 40%;
+    }
+}
+
+@media screen and (min-width: 950px) {
+    .content-wrapper img {
+        width: 30%;
+    }
+}
+
+.detail-box {
+    margin-top: 10px;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, .6)), url("http://image.tmdb.org/t/p/w500/ngl2FKBlU4fhbdsrtdom9LVLBXw.jpg");
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center !important;
+    /* border: 1px solid white; */
+
+}
+
+.content-wrapper {
+    display: flex;
+    padding: 3% 0;
+}
+
+.content-wrapper img {
+    /* width: 30%; */
+    border-radius: 7px;
+
+}
+
+.contents {
+    margin-left: 50px;
+    margin-top: 30px;
+}
+
+.title span {
+    color: var(--subtitle-color);
+    font-size: 0.95em;
+}
+
+.language {
+    margin-right: 13px;
+}
+
+.icon-box {
+    margin: 20px 0;
+}
+
+.rating {
+    color: #ddd;
+}
+
+.rating i {
+    color: gold;
+}
+
+.icons {
+    margin-right: 100px;
+}
+
+.icons i {
+    font-size: 1.25em;
+    margin-right: 18px;
+    color: var(--brand-color);
+
+}
+
+.overview {
+    margin-top: 40px;
+}
+
+

@@ -1,0 +1,154 @@
+main {
+    margin-top: 11vh;
+}
+
+.poster-wrapper {
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: 50%;
+    margin: auto;
+    border: 1px solid blue;
+
+}
+
+.backdrop-poster-card {
+    width: 100%;
+    background-color: #222;
+    margin: 0 5px;
+    border: 1px solid gold;
+}
+
+.backdrop-poster-card img {
+    width: 100%;
+
+}
+
+/* cards */
+.category-box {
+    /* border: 1px solid #ddd;
+    border-bottom: transparent; */
+    padding: 0 5px;
+    margin-bottom: 50px;
+}
+
+.card-title {
+    padding: 7px 2px 10px 2px;
+    border-bottom: 1px dotted #ddd;
+    /* background-color: #222; */
+}
+
+.card-title h3 {
+    font-weight: 600;
+    color: var(--brand-color);
+}
+
+.card-title span {
+    color: var(--subtitle-color);
+}
+
+.left-swipper {
+    color: var(--brand-color);
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    z-index: 99;
+
+}
+
+.card-wrapper {
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: 3px 0;
+}
+
+/* height */
+::-webkit-scrollbar {
+    height: 4px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #111; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--brand-color); 
+    border-radius: 4px;
+  }
+
+@media screen and (max-width: 415px) {
+    .card {
+        width: 45%;
+    }
+}
+
+@media screen and (min-width: 425px) and (max-width: 950px) {
+    .card {
+        width: 26%;
+    }
+}
+
+@media screen and (min-width: 950px) {
+    .card {
+        width: 17%;
+    }
+}
+
+
+.card {
+    /* width: 17%; */
+    margin-right: 12px;
+    background-color: #222;
+}
+
+.card img:hover {
+    cursor: pointer;
+}
+
+.sub-contents {
+    min-height: 27%;
+    padding: 5px;
+    /* background-color: #222; */
+    color: #ddd;
+}
+
+.sub-contents .rating, 
+            .favorite {
+    color: var(--subtitle-color);
+}
+
+.sub-contents .rating-star {
+    color: gold;
+    margin-right: 5px;
+}
+
+
+.sub-contents .favorite {
+    float: right;
+    margin-right: 10px;
+    color: var(--brand-color)
+}
+
+
+.sub-contents p {
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 20px;
+    max-height: 100px;
+    padding: 5px 0;
+    max-width: 400px;
+    /* background-color: aqua ; */
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.sub-contents p:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+

@@ -1,0 +1,70 @@
+<app-navbar (notifyEvt)="getMovieBatch($event)"></app-navbar>
+
+<main>
+  <ng-container *ngFor="let movieBatch of allMovies; let i = index">
+    <ng-container *ngFor="let movie of movieBatch.movies">
+      <ng-container *ngIf="i == batchIndex && movie.id == movieID">
+        <div
+          class="detail-box"
+          style="
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
+        url('http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}');
+    "
+        >
+          <div class="content-wrapper container">
+            <img
+              src="http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}"
+              alt=""
+            />
+            <div class="contents">
+              <div class="title">
+                <h2>
+                  {{ movie.title }}
+                  <ng-container *ngIf="movie.title != movie.original_title">
+                    ({{ movie.original_title }})</ng-container
+                  >
+                </h2>
+                <span>
+                  <span class="language"
+                    >Original Language - {{ movie.original_language }}</span
+                  >
+                  <span class="date"
+                    >Released Date - {{ movie.release_date }}</span
+                  >
+                </span>
+              </div>
+              <div class="icon-box">
+                <span class="icons">
+                  <!-- (mouseenter)="mouseEnter('heart')"
+                    (mouseleave)="mouseLeave('heart')" -->
+                  <i
+                    class="fa fa-{{ heartClass }}"
+                    title="add to favorite"
+                    aria-hidden="true"
+                    (click)="addFav()"
+                  ></i>
+                  <i
+                    class="fa fa-{{ bookmarkClass }}"
+                    title="add to watchlist"
+                    aria-hidden="true"
+                    (click)="addBookmark()"
+                  ></i>
+                </span>
+                <span class="rating">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  Rating -
+                  {{ movie.vote_average }}
+                </span>
+              </div>
+              <div class="overview">
+                <p>
+                  {{ movie.overview }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</main>

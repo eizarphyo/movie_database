@@ -1,1 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+    --brand-color: palevioletred;
+    --subtitle-color: #c0c0c0;
+    color: ;
+}
+
+/* #f4d504 e6c800 fc0*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: auto;
+    background-color: #000;
+    color: #f0fff0;
+    overflow-x: hidden;
+    font-family: Helvetica, sans-serif;
+
+}
+
+main {
+    margin-top: 9vh;
+}
+
+
+/* utilities */
+.container {
+    max-width: 1024px;
+    margin: auto;
+    padding: 0 10px;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
