@@ -1,8 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { MovieDataService } from '../service/movie-data.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Event } from '@angular/router';
-import { NavigationEnd } from '@angular/router';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { MovieApiService } from '../service/movie-api.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,18 +9,15 @@ import { NavigationEnd } from '@angular/router';
 })
 export class NavbarComponent {
 
-  allMovies: any = this.dataService.all_movies;
-  randomBatch?: number;
-  randomMovieIdIndex?: number;
-  randomMovieID?: number;
+  randomMovieID!: number;
+  subscriptions: any;
 
   isLoginPage?: boolean;
   @Output() notifyEvt = new EventEmitter;
 
   constructor(
-    private dataService: MovieDataService,
+    private api: MovieApiService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -41,26 +36,37 @@ export class NavbarComponent {
   }
 
 
-  getRandomInt(min: number, max: number): number {
+  generateRandomInt(min: number, max: number): number {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  generateRandomMovie() {
-    this.randomBatch = this.getRandomInt(0, 4);
-    this.randomMovieIdIndex = this.getRandomInt(0, 19);
-    console.log("random movie index >.", this.randomMovieIdIndex);
-
-    this.randomMovieID = this.allMovies[this.randomBatch].movies[this.randomMovieIdIndex]['id'];
-    console.log("Movie id >>", this.randomMovieID);
-    this.router.navigateByUrl(this.randomBatch + "/" + this.randomMovieID);
-
-    this.notifyEvt.emit(this.randomBatch + "/" + this.randomMovieID);
+  getRandomMovie() {
+    this.randomMovieID = this.generateRandomInt(1, 999999);
+    this.checkMovieAvailability();
+    console.log("Checking...");
   }
 
+  checkMovieAvailability() {
+    this.subscriptions = this.api.getMovieDetail(this.randomMovieID).subscribe({
+      next: (resopnse: any) => {
+        console.log("Movie found. ID >>", this.randomMovieID);
+        this.router.navigateByUrl('movie/' + this.randomMovieID);
+        this.notifyEvt.emit(this.randomMovieID);
+      }, error: (err: any) => {
+        let error = err.status;
+        if (error == 404 || error == "404") {
+          this.getRandomMovie();
+          console.log("not a valaid id");
+        }
+      }
+    });
+  }
 
-
-
-
+  ngOnDestroy() {
+    if (this.subscriptions) {
+      this.subscriptions.unsubscribe();
+    }
+  }
 }

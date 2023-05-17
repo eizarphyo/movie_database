@@ -1,9 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: Alkatra;
+    src: url(assets/fonts/Alkatra-VariableFont_wght.ttf);
+}
 
 :root {
     --brand-color: palevioletred;
     --subtitle-color: #c0c0c0;
-    color: ;
 }
 
 /* #f4d504 e6c800 fc0*/

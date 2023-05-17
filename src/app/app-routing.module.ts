@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './shared/auth.guard';
 
 const routes: Routes = [
   {
@@ -16,20 +17,24 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'detail',
-    component: MovieDetailComponent
+    component: MovieDetailComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'movie/:id',
-    component: MovieDetailComponent
+    component: MovieDetailComponent,
+    canActivate: [AuthGuard]
   },
-  {
-    path: ':batchIndex/:id',
-    component: MovieDetailComponent
-  }
+  // {
+  //   path: ':id',
+  //   component: MovieDetailComponent,
+  //   canActivate: [AuthGuard]
+  // }
 ];
 
 @NgModule({

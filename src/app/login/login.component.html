@@ -6,15 +6,20 @@
       <h1>Login</h1>
 
       <div class="input-field">
+        <span *ngIf="incorrectPass" class="incorrect-pass"
+          >Your password or username is incorrect.</span
+        >
         <label for="username"
           >Username <i class="fa fa-user-circle-o" aria-hidden="true"></i>
         </label>
+
         <input
           type="text"
           id="username"
           name="username"
           required
           [(ngModel)]="username"
+          (focus)="removeIncorrectText()"
         />
 
         <label for="password"
@@ -27,6 +32,7 @@
           name="password"
           required
           [(ngModel)]="password"
+          (focus)="removeIncorrectText()"
         />
         <span class="forgot-pass"
           ><a (click)="forgotPassword()">forgot password?</a></span

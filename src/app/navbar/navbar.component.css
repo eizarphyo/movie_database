@@ -1,36 +1,47 @@
 .navbar {
     background-color: transparent;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid rgb(185, 185, 185);
     width: 100vw;
     height: 8vh;
     position: absolute;
     top: 0;
     right: 0;
-    box-shadow: 0 4px 4px rgba(102, 102, 102, 0.9);
+    box-shadow: 0 2px 2px rgb(153, 153, 153, 0.5);
 }
 
 .navbar .flex {
     justify-content: space-between;
 }
 
+/* MOBILE */
 @media screen and (max-width: 768px) {
     nav ul li {
         margin-left: 20px;
     }
+
+    .logo {
+        font-size: 2.15em;
+    }
 }
 
+/* TABLET & LAPTOP */
 @media screen and (min-width: 768px) {
     nav ul li {
         margin-left: 50px;
     }
+
+    .logo {
+        font-size: 2.36em;
+    }
 }
 
 .logo {
-    font-weight: 600;
-    color: #111; 
+    /* font-size: 2.3em; */
+    color: var(--brand-color);
+    /* color: #000; 
     background-color: var(--brand-color);
-    padding: 2px 5px;
-    border-radius: 5px;
+    padding: 5px 7px;
+    border-radius: 5px; */
 }
 
 .logo:hover {
@@ -39,6 +50,7 @@
 
 
 nav ul li{
+    font-weight: 500;
     list-style-type: none;
     float: left;
     color: var(--brand-color)
@@ -49,7 +61,7 @@ ul a {
     padding: 2px;
 }
 
-ul a:hover {
+.menu a:hover {
     cursor: pointer;
     border-bottom: 1.5px solid var(--brand-color);
 }
@@ -57,4 +69,18 @@ ul a:hover {
 ul li i:hover{
     cursor: pointer;
     color: var(--brand-color);
+}
+
+.register{
+    color: var(--brand-color);
+    border: 3px solid var(--brand-color);
+    border-radius: 3px;
+    padding: 5px 5px;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.register:hover{
+    cursor: pointer;
+    background-color: #333;
 }

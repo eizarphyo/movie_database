@@ -1,14 +1,19 @@
 <div class="navbar">
   <div class="container flex">
-    <h2 class="logo" routerLink="/home">MDb</h2>
-    <nav *ngIf="!isLoginPage">
-      <ul>
+    <h1 class="logo" routerLink="/home">MDB</h1>
+    <nav>
+      <ul class="menu" *ngIf="!isLoginPage">
         <li routerLink="/home"><a>Home</a></li>
-        <li (click)="generateRandomMovie()"><a>Random Movie</a></li>
+        <li (click)="getRandomMovie()"><a>Random</a></li>
         <li>
           <i class="fa fa-search" aria-hidden="true"></i>
         </li>
       </ul>
+      <!-- <ul ngClass="login-register" *ngIf="isLoginPage">
+        <li class="login"><a>LogIn</a></li>
+        <li class="register"><a>Register</a></li>
+      </ul> -->
+      <a *ngIf="isLoginPage" class="register">Register</a>
     </nav>
   </div>
 </div>

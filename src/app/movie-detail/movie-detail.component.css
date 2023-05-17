@@ -65,6 +65,10 @@
     margin-top: 30px;
 }
 
+.title h2 {
+
+}
+
 .title span {
     color: var(--subtitle-color);
     font-size: 0.95em;
@@ -97,8 +101,17 @@
 
 }
 
-.overview {
+.overview-container {
     margin-top: 40px;
+}
+
+.tagline  {
+    color: var(--subtitle-color);
+    margin-bottom: 10px;
+    text-align: center;
+    font-family: Alkatra;
+    font-weight: 400;
+    background-color: rgba(225,225,225,0.25);
 }
 
 

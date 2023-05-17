@@ -1,23 +1,190 @@
 <app-navbar></app-navbar>
 
 <main>
-  <div
-    class="category-box container"
-    *ngFor="let movieBatch of allMovies; let i = index"
-  >
-    <div class="card-title">
-      <h3>{{ movieBatch.batchName }}</h3>
-      <span>{{ movieBatch.subtitle }}</span>
-    </div>
+  <!-- SKELETON LOADER -->
+  <ng-container *ngIf="loading">
+    <div class="container">
+      <ngx-skeleton-loader
+        count="1"
+        appearance="line"
+        [theme]="{ height: '22px', width: '150px' }"
+      ></ngx-skeleton-loader>
+      <br />
+      <ngx-skeleton-loader
+        count="1"
+        appearance="line"
+        [theme]="{ height: '18px', width: '230px' }"
+      ></ngx-skeleton-loader>
+      <br />
+      <div class="loader-wrapper">
+        <div class="movie-loader">
+          <ngx-skeleton-loader
+            count="1"
+            appearance="line"
+            [theme]="{ height: '220px', width: '100%' }"
+          ></ngx-skeleton-loader>
+        </div>
+        <div class="movie-loader">
+          <ngx-skeleton-loader
+            count="1"
+            appearance="line"
+            [theme]="{ height: '220px', width: '100%' }"
+          ></ngx-skeleton-loader>
+        </div>
+        <div class="movie-loader">
+          <ngx-skeleton-loader
+            count="1"
+            appearance="line"
+            [theme]="{ height: '220px', width: '100%' }"
+          ></ngx-skeleton-loader>
+        </div>
+        <div class="movie-loader">
+          <ngx-skeleton-loader
+            count="1"
+            appearance="line"
+            [theme]="{ height: '220px', width: '100%' }"
+          ></ngx-skeleton-loader>
+        </div>
 
+        <div class="movie-loader">
+          <ngx-skeleton-loader
+            count="1"
+            appearance="line"
+            [theme]="{ height: '220px', width: '100%' }"
+          ></ngx-skeleton-loader>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="!loading">
+    <div
+      class="category-box container"
+      *ngFor="let movieBatch of allMovies; let i = index"
+    >
+      <!-- CARD TITLE -->
+
+      <div class="card-title">
+        <h3>{{ movieBatch.batchName }}</h3>
+        <span>{{ movieBatch.subtitle }}</span>
+      </div>
+
+      <div class="card-wrapper">
+        <!-- CARD -->
+        <mat-card class="card" *ngFor="let movie of movieBatch.movies">
+          <!-- CONTENT -->
+          <ng-container *ngIf="movie.poster_path != ''">
+            <!-- POSTER IMG -->
+            <img
+              mat-card-image
+              (click)="goTo(movie.id)"
+              src="http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}"
+            />
+
+            <!-- SUB-CONTENT -->
+            <mat-card-content class="sub-contents">
+              <span class="rating-star"
+                ><i class="fa fa-star" aria-hidden="true"></i
+              ></span>
+              <span class="rating">{{ movie.vote_average }}</span>
+              <span class="favorite" (click)="addFav()"
+                ><i class="fa fa-{{ heartClass }}" aria-hidden="true"></i
+              ></span>
+              <p (click)="goTo(movie.id)">{{ movie.title }}</p>
+            </mat-card-content>
+          </ng-container>
+        </mat-card>
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- <ng-container *ngFor="let movieSet of allMovies">
+    <div *ngFor="let movie of movieSet.movies">{{ movie.title }}</div>
+  </ng-container>
+
+
+<!-- TEST -->
+  <!-- 
+  <div class="card-title">
+    <h3>Now Playing Movies</h3>
+    <span>Movies playing in theaters</span>
+  </div>
+
+  <ng-container *ngIf="loading">
     <div class="card-wrapper">
-      <mat-card class="card" *ngFor="let movie of movieBatch.movies">
+      <div class="card">
+        <ngx-skeleton-loader
+          count="1"
+          appearance="line"
+          [theme]="{ width: '100%', height: '220px' }"
+        ></ngx-skeleton-loader>
+      </div>
+
+      <div class="card">
+        <ngx-skeleton-loader
+          count="1"
+          appearance="line"
+          [theme]="{ width: '100%', height: '220px' }"
+        ></ngx-skeleton-loader>
+      </div>
+
+      <div class="card">
+        <ngx-skeleton-loader
+          count="1"
+          appearance="line"
+          [theme]="{ width: '100%', height: '220px' }"
+        ></ngx-skeleton-loader>
+      </div>
+
+      <div class="card">
+        <ngx-skeleton-loader
+          count="1"
+          appearance="line"
+          [theme]="{ width: '100%', height: '220px' }"
+        ></ngx-skeleton-loader>
+      </div>
+
+      <div class="card">
+        <ngx-skeleton-loader
+          count="1"
+          appearance="line"
+          [theme]="{ width: '100%', height: '220px' }"
+        ></ngx-skeleton-loader>
+      </div>
+
+      <div class="card">
+        <ngx-skeleton-loader
+          count="1"
+          appearance="line"
+          [theme]="{ width: '100%', height: '220px' }"
+        ></ngx-skeleton-loader>
+      </div>
+    </div>
+  </ng-container>
+
+  <div class="card-wrapper">
+    
+    <ng-container *ngIf="loading">
+      <ngx-skeleton-loader
+        count="1"
+        appearance="line"
+        [theme]="{ width: '100%', height: '220px' }"
+      ></ngx-skeleton-loader>
+      <h3>Grrr</h3>
+    </ng-container>
+
+    >
+    <mat-card class="card" *ngFor="let movie of nowPlaying">
+      
+      <ng-container *ngIf="loading">
+        
         <img
           mat-card-image
-          (click)="goTo(movie.id, i)"
+          (click)="goTo(movie.id)"
           src="http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}"
         />
 
+       
         <mat-card-content class="sub-contents">
           <span class="rating-star"
             ><i class="fa fa-star" aria-hidden="true"></i
@@ -26,9 +193,9 @@
           <span class="favorite" (click)="addFav()"
             ><i class="fa fa-{{ heartClass }}" aria-hidden="true"></i
           ></span>
-          <p (click)="goTo(movie.id, i)">{{ movie.title }}</p>
+          <p (click)="goTo(movie.id)">{{ movie.title }}</p>
         </mat-card-content>
-      </mat-card>
-    </div>
-  </div>
+      </ng-container>
+    </mat-card>
+  </div> -->
 </main>

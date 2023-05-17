@@ -9,6 +9,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MatCardModule } from '@angular/material/card';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { FormsModule } from '@angular/forms';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { HttpClientModule } from '@angular/common/http';
+
+
 
 @NgModule({
   declarations: [
@@ -22,7 +26,18 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     MatCardModule,
-    FormsModule
+    FormsModule,
+    NgxSkeletonLoaderModule.forRoot({
+      theme: {
+        // Enabliong theme combination
+        extendsFromRoot: true,
+        // ... list of CSS theme attributes
+        // height: '15em',
+        background: '#555'
+      },
+    }),
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
